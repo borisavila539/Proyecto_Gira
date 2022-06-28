@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, StatusBar, Image, Pressable, TouchableHighlight, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, StatusBar, Image, Pressable, TouchableOpacity  } from 'react-native';
+//import LinearGradient  from 'react-native-linear-gradient';
+import LinearGradient from 'expo-linear-gradient';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 export default function App() {
@@ -10,13 +12,10 @@ export default function App() {
     
   }
   return (
-    <View style={[styles.container,styles.gradiente]}>
-    <StatusBar style='auto' backgroundColor={'#3B83BD'}/>
+    <View style={styles.container}>
+    <StatusBar style='auto' backgroundColor={'#47b5ff'}/>
     <Image source={require('./assets/Logo.png')} style={styles.imagen}></Image>
 
-      {
-        //<Text style={styles.text}>Digitalizacion Gira de Asesores</Text>
-      }
       <View style={styles.containerinputButton}>
       <View style={styles.textInputAlign}>
         <FontAwesome5 
@@ -48,12 +47,15 @@ export default function App() {
             <FontAwesome5 name={viewPassword?'eye':'eye-slash'} style={styles.icons} solid/>
           </Pressable>
       </View>
-      <Pressable style={({pressed})=>[{backgroundColor: pressed?'#C3B299':'#247BA0'},styles.button]} 
-      onPress={onPressEnviar} 
+      <TouchableOpacity style={{width:'100%'}}
+      activeOpacity={0.5}  
+      onPress={onPressEnviar}
       hitSlop={{ top:20, bottom:20, left: 20, right: 20}}
       >
+        <View style={styles.button}>
           <Text style={[styles.text,{color:'#fff'}]}>Enviar</Text>
-      </Pressable>
+          </View>
+      </TouchableOpacity>
       </View>
     </View>
   );
@@ -62,7 +64,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#CBD4C2',
+    backgroundColor: '#8ED2FF', //47B5FF
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -104,18 +106,14 @@ const styles = StyleSheet.create({
     padding:10,
     alignItems: 'center',
     borderRadius:5,
+    backgroundColor:'#06283D',
+    borderWidth:1,
+
   },
   containerinputButton:{
     width:'80%',
     maxWidth:400,
     alignItems: 'center',
   },
-  gradiente:{
-    color1:{
-      backgroundColor:'#000',
-    },
-    color2:{
-      backgroundColor:'#fff',
-    }
-  }
+  
 });
