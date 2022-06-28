@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, StatusBar, Image, Pressable, TouchableOpacity  } from 'react-native';
+import { StyleSheet, Text, TextInput, View, StatusBar, Image, Pressable, TouchableOpacity, Alert  } from 'react-native';
 //import LinearGradient  from 'react-native-linear-gradient';
 import LinearGradient from 'expo-linear-gradient';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
@@ -9,11 +9,15 @@ export default function App() {
   const [password, setPassword] = useState('');
   const [viewPassword, setViewPassword] = useState(true);
   const onPressEnviar = () => {
-    
+    if(email.length==0 || password.length==0){
+      Alert.alert('User or Password is empty')
+    }else{
+      Alert.alert('You are Login')
+    }
   }
   return (
     <View style={styles.container}>
-    <StatusBar style='auto' backgroundColor={'#47b5ff'}/>
+    <StatusBar style='auto' backgroundColor={'#8ED2FF'}/>
     <Image source={require('./assets/Logo.png')} style={styles.imagen}></Image>
 
       <View style={styles.containerinputButton}>
@@ -50,7 +54,7 @@ export default function App() {
       <TouchableOpacity style={{width:'100%'}}
       activeOpacity={0.5}  
       onPress={onPressEnviar}
-      hitSlop={{ top:20, bottom:20, left: 20, right: 20}}
+      hitSlop={{ top:10, bottom:20, left:20, right: 20}}
       >
         <View style={styles.button}>
           <Text style={[styles.text,{color:'#fff'}]}>Enviar</Text>
