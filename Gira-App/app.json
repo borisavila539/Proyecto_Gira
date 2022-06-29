@@ -4,7 +4,7 @@
     "slug": "Gira-App",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/imagen-login.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
