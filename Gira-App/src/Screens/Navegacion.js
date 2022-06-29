@@ -61,14 +61,15 @@ const Navegador = (props) =>{
                 tabBarStyle : {height: 70},
                 tabBarLabelStyle: {paddingBottom:15},
                 tabBarIconStyle: {marginTop:5},
-                tabBarHideOnKeyboard:true,
+                headerShown:false
+                //tabBarHideOnKeyboard:true,
                 
             })}
             >
-                <Tab.Screen name='Gastos de Viaje'  component={ScreenGastosViaje} options={{headerTitleAlign:'center'}}/>
-                <Tab.Screen name='Historial' component={ScreenGastosHistorial} options={{headerShown:false}}/>
-                <Tab.Screen name='Solicitar Proveedor' component={ScreenSolicitarProveedor} options={{headerShown:false}}/>
-                <Tab.Screen name='No Sincronizado' component={ScreenNoSincronizado} options={{headerShown:false}}/>
+                <Tab.Screen name='Gastos de Viaje'  component={ScreenGastosViaje}/>
+                <Tab.Screen name='Historial' component={ScreenGastosHistorial}/>
+                <Tab.Screen name='Solicitar Proveedor' component={ScreenSolicitarProveedor} />
+                <Tab.Screen name='No Sincronizado' component={ScreenNoSincronizado}/>
             </Tab.Navigator>
         </NavigationContainer>
     )

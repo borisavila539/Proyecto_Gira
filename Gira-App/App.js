@@ -9,7 +9,7 @@ export default function App() {
         style='auto' 
         backgroundColor={'#3b5998'}
       />
-      <Navegador/>
+      <Navegador/> 
     </>
   );
 }

@@ -5,7 +5,16 @@
     return(
         <View style={styles.textInput}>
             <Text style={styles.text}>{props.title}</Text>
-            <TextInput style={styles.input} placeholder={props.placeholder} keyboardType={props.teclado}></TextInput>
+            <TextInput 
+            style={styles.input} 
+            placeholder={props.placeholder} 
+            keyboardType={props.teclado} 
+            multiline={props.multiline} 
+            editable={props.editable}
+            onChangeText={props.onChangeText}
+            value={props.value}
+            maxLength={props.maxLength}
+            ></TextInput>
         </View>
 
     )
@@ -15,19 +24,22 @@
     text:{
         fontSize:15,
         width:'30%',
-        textAlign: "right",
     },
     textInput:{
         flexDirection: 'row',
         width: '100%',
         alignItems: "center",
-        padding:10, 
+        padding:5,
     },
     input:{
         flex:1,
         borderWidth:1,
         borderRadius:5,
         textAlign: "center",
+        maxHeight:100,
+        fontSize:15,
+        backgroundColor: '#fff',
+        borderColor:'#ddd'
     }
 
  })
