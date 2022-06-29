@@ -1,67 +1,94 @@
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, StatusBar, Image, Pressable, TouchableOpacity, Alert  } from 'react-native';
-//import LinearGradient  from 'react-native-linear-gradient';
-import LinearGradient from 'expo-linear-gradient';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { 
+  StyleSheet, 
+  Text, 
+  TextInput, 
+  View, 
+  StatusBar, 
+  Image, 
+  Pressable, 
+  TouchableOpacity, 
+  Alert  
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+//Documentacion del gradiente
+//https://docs.expo.dev/versions/latest/sdk/linear-gradient/
+//expo install expo-linear-gradient
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default function App() {
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   const [viewPassword, setViewPassword] = useState(true);
+
   const onPressEnviar = () => {
-    if(email.length==0 || password.length==0){
-      Alert.alert('User or Password is empty')
+    if(user.length==0 || password.length==0){
+      Alert.alert('Debe ingresar el usuario y contraseña');
     }else{
-      Alert.alert('You are Login')
+      Alert.alert('You ar Login as User: '+ user);
     }
   }
   return (
-    <View style={styles.container}>
-    <StatusBar style='auto' backgroundColor={'#8ED2FF'}/>
-    <Image source={require('./assets/Logo.png')} style={styles.imagen}></Image>
-
+    <LinearGradient 
+      style={styles.container}
+      colors={['#3b5998', '#6d84b4','#afbdd4','#d8dfea']}
+    >
+      <StatusBar 
+        style='auto' 
+        backgroundColor={'#3b5998'}
+      />
+      <Image 
+        source={require('./assets/Logo.png')} 
+        style={styles.imagen}
+      />
       <View style={styles.containerinputButton}>
-      <View style={styles.textInputAlign}>
-        <FontAwesome5 
-          name='user' 
-          style={styles.icons} 
-          solid
+        <View style={styles.textInputAlign}>
+          <FontAwesome5 
+            name='user' 
+            style={styles.icons} 
+            solid
           />
-        <TextInput 
-          style={styles.input} 
-          placeholder='Usuario' 
-          keyboardType='email-address'
-          onChangeText={(value)=>setEmail(value)}
-          autoCompleteType='off' 
-        ></TextInput>
-      </View>
-      <View style={styles.textInputAlign}>
-      <FontAwesome5 
-        name='key' 
-        style={styles.icons}/>
-        <TextInput 
-          style={styles.input} 
-          placeholder='Contraseña' 
-          secureTextEntry={viewPassword} 
-          onChangeText={(value)=>setPassword(value)}
-          ></TextInput>
+          <TextInput 
+            style={styles.input} 
+            placeholder='Usuario' 
+            onChangeText={(value)=>setUser(value)}
+            autoCompleteType='off' 
+            />
+        </View>
+        <View style={styles.textInputAlign}>
+          <FontAwesome5 
+            name='key' 
+            style={styles.icons}
+          />
+          <TextInput 
+            style={styles.input} 
+            placeholder='Contraseña' 
+            secureTextEntry={viewPassword} 
+            onChangeText={(value)=>setPassword(value)}
+          />
           <Pressable 
             onPress={()=>setViewPassword(!viewPassword)} 
-            hitSlop={{ top:20, bottom:20, left: 20, right: 20}}>
-            <FontAwesome5 name={viewPassword?'eye':'eye-slash'} style={styles.icons} solid/>
+            hitSlop={{ top:20, bottom:20, left: 20, right: 20}}
+          >
+            <FontAwesome5 
+              name={viewPassword?'eye':'eye-slash'} 
+              style={styles.icons} 
+              solid
+            />
           </Pressable>
-      </View>
-      <TouchableOpacity style={{width:'100%'}}
-      activeOpacity={0.5}  
-      onPress={onPressEnviar}
-      hitSlop={{ top:10, bottom:20, left:20, right: 20}}
-      >
-        <View style={styles.button}>
-          <Text style={[styles.text,{color:'#fff'}]}>Enviar</Text>
+        </View>
+        <TouchableOpacity 
+          style={{width:'100%'}}
+          activeOpacity={0.5}  
+          onPress={onPressEnviar}
+          hitSlop={{ top:10, bottom:20, left:20, right: 20}}
+        >
+          <View style={styles.button}>
+            <Text style={[styles.text,{color:'#fff'}]}>Enviar</Text>
           </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -112,12 +139,10 @@ const styles = StyleSheet.create({
     borderRadius:5,
     backgroundColor:'#06283D',
     borderWidth:1,
-
   },
   containerinputButton:{
     width:'80%',
     maxWidth:400,
     alignItems: 'center',
   },
-  
 });
