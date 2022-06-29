@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {SendButton} from '../Components/index'
+import {SendButton} from '../Components/indexComponents'
 
 const Login = (props) =>{
     const [user, setUser] = useState('');

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, StatusBar, View } from 'react-native';
-import {Login,Navegador} from './src/Screens/index'
+import {Login,Navegador} from './src/Screens/indexScreens'
 
 export default function App() {
   return (
