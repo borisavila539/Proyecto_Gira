@@ -23,7 +23,7 @@ const Viajes = (props) =>{
     return(
         <ScrollView contentContainerStyle={styles.scrollview}>
             <SafeAreaView  style={styles.container}>
-                <TextInputContainer title='RTN: ' placeholder='XXXXXXXXXXXXXX'  maxLength={14}/>
+                <TextInputContainer title='RTN: ' placeholder='XXXXXXXXXXXXXX'  maxLength={14} teclado='decimal-pad'/>
                 <TextInputContainer title='N. Factura: ' placeholder='XXX-XXX-XX-XXXXXXXX' value={nFactura} onChangeText={(value)=>onChanceNFactura(value)} maxLength={19}  teclado='decimal-pad'/>
                 <TextInputContainer title='Descripcion: ' multiline={true} maxLength={300}/>
                 <TextInputContainer title='SubTotal: ' placeholder='999.99' teclado='decimal-pad'
