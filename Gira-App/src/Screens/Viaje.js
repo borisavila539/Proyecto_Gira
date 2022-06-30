@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button, StyleSheet, View, ScrollView, SafeAreaView  } from "react-native";
 import { TextInputContainer, SendButton } from "../Components/indexComponents";
-import DatePicker from 'react-native-date-picker'
 const Viajes = (props) =>{
     const [nFactura,SetNFactura] = useState('')
     const [subTotal, setSubTotal] = useState(0.00)
