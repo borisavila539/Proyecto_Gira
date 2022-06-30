@@ -22,7 +22,7 @@
 
  const styles = StyleSheet.create({
     text:{
-        fontSize:15,
+        fontSize:16,
         width:'30%',
     },
     textInput:{
@@ -37,9 +37,10 @@
         borderRadius:5,
         textAlign: "center",
         maxHeight:100,
-        fontSize:15,
+        fontSize:16,
         backgroundColor: '#fff',
-        borderColor:'#ddd'
+        borderColor:'#ddd',
+        height:35,
     }
 
  })

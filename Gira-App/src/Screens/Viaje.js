@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { Button, StyleSheet, View, ScrollView, SafeAreaView  } from "react-native";
-import { TextInputContainer, SendButton } from "../Components/indexComponents";
+import React, { Component, useState } from "react";
+import { Button, StyleSheet, View, ScrollView, SafeAreaView, Text  } from "react-native";
+import { TextInputContainer, SendButton, DropdownList } from "../Components/indexComponents";
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 const Viajes = (props) =>{
     const [nFactura,SetNFactura] = useState('')
     const [subTotal, setSubTotal] = useState(0.00)
     const [isv,setIsv] = useState(0.00)
     const [ist, setIst] = useState(0.00)
     const [total, setTotal] = useState(0.00)
-
+ 
     const onChanceNFactura = (value) =>{
 
         if(value.length==16){
@@ -19,10 +21,35 @@ const Viajes = (props) =>{
             SetNFactura(value);
         }
     }
+    
+    let Tipo = [
+        {value: 'GASTOS DE VIAJE',},
+        {value: 'GASTOS DE COMBUSTIBLE',},
+        {value: 'GASTOS POR DEPRECIACION',}
+    ];
+    let Categoria = [
+        {value: 'HOSPEDAJE',},
+        {value: 'ALIMENTACION',},
+        {value: 'COMBUSTIBLE',},
+        {value: 'PAPELERIA',},
+        {value: 'PEAJE',},
+        {value: 'OTROS',} 
+    ]
+
+    
     return(
         <ScrollView contentContainerStyle={styles.scrollview}>
             <SafeAreaView  style={styles.container}>
-                <TextInputContainer title='RTN: ' placeholder='XXXXXXXXXXXXXX'  maxLength={14} teclado='decimal-pad'/>
+                <DropdownList label='Tipo de Gasto:' data={Tipo}/>
+                <DropdownList label='Categoria de Gasto:' data={Categoria}/>
+                <View style={styles.buscarProveedor}>
+                    <View style={{width:'90%'}}>
+                    <TextInputContainer title='RTN: ' placeholder='XXXXXXXXXXXXXX'  maxLength={14} teclado='decimal-pad'/>
+                    </View>
+                    <FontAwesome5 name='search' style={styles.icons}/>
+                </View>
+                
+                <DropdownList label='Proveedor:' data={Categoria}/>
                 <TextInputContainer title='N. Factura: ' placeholder='XXX-XXX-XX-XXXXXXXX' value={nFactura} onChangeText={(value)=>onChanceNFactura(value)} maxLength={19}  teclado='decimal-pad'/>
                 <TextInputContainer title='Descripcion: ' multiline={true} maxLength={300}/>
                 <TextInputContainer title='SubTotal: ' placeholder='999.99' teclado='decimal-pad'
@@ -58,8 +85,17 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems: "center", 
         justifyContent: "center", 
-    }
-
+    },
+    buscarProveedor:{
+        width:'100%',
+        flexDirection:'row',
+        alignItems: "center"
+    },
+    icons:{
+        flex:0,
+        fontSize:20,
+        marginLeft:5,
+      },
 })
 
 export default Viajes;
