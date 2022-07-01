@@ -15,7 +15,7 @@ const SendButton= (props) => {
           hitSlop={{ top:10, bottom:20, left:20, right: 20}}
         >
           <View style={styles.button}>
-            <Text style={[styles.text,{color:'#fff'}]}>{props.title}</Text>
+            <Text style={[styles.text]}>{props.title}</Text>
           </View>
         </TouchableOpacity>
     )
@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
         padding:10,
         alignItems: 'center',
         borderRadius:5,
-        backgroundColor:'#4E9F3D',//06283D
-        //borderWidth:1,
+        backgroundColor:'#30475E',
+        
       },
       text:{
         fontSize:20,
-        color:'#000',
+        color:'#F5F5F5',//D8E9A8
         fontWeight:'bold',
       },
 })

@@ -38,10 +38,11 @@ const Navegador = (props) =>{
     return(
         <NavigationContainer>
             <Tab.Navigator
+            
             screenOptions={({route}) =>({
                 tabBarIcon: ({focused,color}) => {
                     let iconName;
-                    color=  focused? '#fff' : '#fff'
+                    color= '#F5F5F5'
                     if(route.name === 'Gastos de Viaje'){
                         iconName='file-invoice-dollar';
                     }else if(route.name === 'Historial'){
@@ -54,15 +55,16 @@ const Navegador = (props) =>{
 
                     return <FontAwesome5 name={iconName} size={30} color={color}/>
                 },
-                tabBarActiveTintColor:'#fff',
-                tabBarInactiveTintColor: '#ddd',
-                tabBarActiveBackgroundColor: '#4E9F3D',
-                tabBarInactiveBackgroundColor: '#1E5128',
+                tabBarActiveTintColor:'#F5F5F5',
+                tabBarInactiveTintColor: '#F5F5F5',
+                tabBarActiveBackgroundColor: '#F05454',
+                tabBarInactiveBackgroundColor: '#121212',
                 tabBarStyle : {height: 70},
                 tabBarLabelStyle: {paddingBottom:15},
                 tabBarIconStyle: {marginTop:5},
                 headerShown:false
             })}
+            
             >
                 <Tab.Screen name='Gastos de Viaje'  component={ScreenGastosViaje}/>
                 <Tab.Screen name='Historial' component={ScreenGastosHistorial}/>

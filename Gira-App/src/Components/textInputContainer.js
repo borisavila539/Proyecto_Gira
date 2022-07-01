@@ -42,8 +42,8 @@
         borderColor:'#ddd',
         height:35,
         borderWidth:1,
-        borderColor:'#4E9F3D',
-        color:'#1E5128'
+        borderColor:'#30475E',
+        color:'#121212'
     }
 
  })

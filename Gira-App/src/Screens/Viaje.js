@@ -1,7 +1,10 @@
 import React, { Component, useState } from "react";
-import { Button, StyleSheet, View, ScrollView, SafeAreaView, Text  } from "react-native";
+import { Button, StyleSheet, View, ScrollView, SafeAreaView, Text, Touchable, TouchableOpacity  } from "react-native";
 import { TextInputContainer, SendButton, DropdownList } from "../Components/indexComponents";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import DatePicker from 'react-native-date-picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { StatusBar } from "expo-status-bar";
 
 const Viajes = (props) =>{
     const [nFactura,SetNFactura] = useState('')
@@ -10,6 +13,9 @@ const Viajes = (props) =>{
     const [ist, setIst] = useState(0.00)
     const [total, setTotal] = useState(0.00)
     const [proveedor, setProveedor] = useState('')
+    const [openDate, SetOpenDate] = useState(false)
+    const [date,setDate] = useState('')
+    const [showdate,setShowDate] = useState(new Date())
  
     const onChanceNFactura = (value) =>{
 
@@ -46,9 +52,21 @@ const Viajes = (props) =>{
     const onChangeProveedor = (value) => { 
         console.log('Selected Proveedor: ' + JSON.stringify(value));
     }
+    const onchange = (event,selectedDate) => {
+        const currentDate =selectedDate.getDate()+'/'+(selectedDate.getMonth()+1)+'/'+selectedDate.getFullYear();
+        SetOpenDate(false)
+        if(event.type==='set'){
+            setDate(currentDate)
+            setShowDate(selectedDate)
+        }
+        console.log(event)
+    }
     
     return(
-        <ScrollView contentContainerStyle={styles.scrollview}>
+        <ScrollView contentContainerStyle={{alignItems: "center",backgroundColor:'#F5F5F5'}}>
+            <View style={{width:'100%',borderWidth:1,alignItems: "center", backgroundColor:'#121212',padding:5}}>
+                    <Text style={{fontSize:20,color:'#F5F5F5'}}>Boris Avila</Text>
+                </View>
             <SafeAreaView  style={styles.container}>
                 <DropdownList label='Tipo de Gasto:' data={Tipo} onChangeText={(value) => onChangeTipo(value)}/>
                 <DropdownList label='Categoria de Gasto:' data={Categoria} onChangeText={(value) => onChangeCategoria(value)}/>
@@ -72,6 +90,16 @@ const Viajes = (props) =>{
                 <TextInputContainer title='ISV 15%: ' teclado='decimal-pad' editable={false} value={isv+''}/>
                 <TextInputContainer title='IST: 4% ' teclado='decimal-pad' editable={false} value={ist+''}/>
                 <TextInputContainer title='Total: ' teclado='decimal-pad' editable={false} value={total+''}/>
+                <TouchableOpacity onPress={()=>SetOpenDate(true)} style={{flexDirection:'row',alignItems:'center'}}>
+                    <TextInputContainer title='Fecha Recibo' editable={false} value={date+''} onPressIn={()=>SetOpenDate(true)}></TextInputContainer>
+                    <FontAwesome5 name="calendar-alt" style={styles.icons}/>
+                </TouchableOpacity>
+                {openDate && (<DateTimePicker
+                    mode='calendar'  
+                    value={showdate}
+                    onChange={onchange}
+                    onTouchCancel={()=>console.log('Cancelado')}
+                />)}
                 <SendButton title='Enviar'/>
             </SafeAreaView >
         </ScrollView>
@@ -91,13 +119,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center", 
         marginVertical:20,
+        marginTop:30,
         
-    },
-    scrollview:{
-        flex:1,
-        alignItems: "center", 
-        justifyContent: "center",
-        backgroundColor:'#fff', 
     },
     buscarProveedor:{
         width:'100%',
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
         flex:0,
         fontSize:20,
         marginLeft:5,
-        color:'#1E5128'
+        color:'#000'
       },
 })
 
