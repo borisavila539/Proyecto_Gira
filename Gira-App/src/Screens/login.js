@@ -3,9 +3,11 @@ import {
   StyleSheet,  
   TextInput, 
   View,  
-  Image, 
+  ImageBackground, 
   Pressable,  
-  Alert, 
+  Alert,
+  Image,
+  StatusBar, 
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -24,12 +26,25 @@ const Login = (props) =>{
           }
     }
     return(
+      
+        
         <LinearGradient 
         style={styles.container}
-        colors={['#3b5998', '#6d84b4','#afbdd4','#d8dfea']}
+        colors={['#4E9F3D','#D8E9A8']}
         >
+          <StatusBar 
+        style='auto' 
+        backgroundColor={'#4E9F3D'}
+      />
+          {
+            //<ImageBackground
+          //source={require('../../assets/background_dot.png')}
+          //resizeMode='repeat'
+          //style={styles.container}
+          //>
+        }
         
-        <Image 
+        <Image
             source={require('../../assets/Logo.png')} 
             style={styles.imagen}
         />
@@ -69,15 +84,19 @@ const Login = (props) =>{
                 />
             </Pressable>
             </View>
-            <SendButton title='Enviar' onPressFunction={onPressEnviar}/>
+            <View style={{width:'100%',marginTop:20}}>
+            <SendButton title='Login' onPressFunction={onPressEnviar}/>
+            </View>
         </View>
         </LinearGradient>
+        
     )
 }
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#8ED2FF', //47B5FF
+      width:'100%',
+      //backgroundColor: '#8ED2FF', //47B5FF
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -86,7 +105,7 @@ const styles = StyleSheet.create({
       padding:5,
       marginLeft: 10,
       fontSize:20,
-      color:'#000',
+      color:'#1E5128',
     },
     textInputAlign:{
       flexDirection:'row',
@@ -94,25 +113,35 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       marginTop:15,
       width:'100%',
-      borderRadius:5,
       paddingHorizontal:3,
       backgroundColor:'#fff',
       maxWidth:500,
+      borderRadius:5,
+      shadowColor:'#000',
+      shadowOffset:{
+        width:0,
+        height:12,
+      },
+      shadowOpacity: 0.58,
+      shadowRadius:16.00,
+      elevation:24,
     },
     imagen:{
-      width:220,
-      height: 220,
+      width:300,
+      height: 300,
       marginBottom: 20,
     },
     icons:{
       flex:0,
       fontSize:20,
       marginLeft:5,
+      color:'#1E5128',
     },
     containerinputButton:{
       width:'80%',
       maxWidth:400,
       alignItems: 'center',
+   
     },
   });
 

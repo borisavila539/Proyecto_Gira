@@ -9,6 +9,7 @@ const Viajes = (props) =>{
     const [isv,setIsv] = useState(0.00)
     const [ist, setIst] = useState(0.00)
     const [total, setTotal] = useState(0.00)
+    const [proveedor, setProveedor] = useState('')
  
     const onChanceNFactura = (value) =>{
 
@@ -36,12 +37,21 @@ const Viajes = (props) =>{
         {value: 'OTROS',} 
     ]
 
+    const onChangeTipo = (value) => { 
+        console.log('Selected Tipo: ' + JSON.stringify(value));
+    }
+    const onChangeCategoria = (value) => { 
+        console.log('Selected Categoria: ' + JSON.stringify(value));
+    }
+    const onChangeProveedor = (value) => { 
+        console.log('Selected Proveedor: ' + JSON.stringify(value));
+    }
     
     return(
         <ScrollView contentContainerStyle={styles.scrollview}>
             <SafeAreaView  style={styles.container}>
-                <DropdownList label='Tipo de Gasto:' data={Tipo}/>
-                <DropdownList label='Categoria de Gasto:' data={Categoria}/>
+                <DropdownList label='Tipo de Gasto:' data={Tipo} onChangeText={(value) => onChangeTipo(value)}/>
+                <DropdownList label='Categoria de Gasto:' data={Categoria} onChangeText={(value) => onChangeCategoria(value)}/>
                 <View style={styles.buscarProveedor}>
                     <View style={{width:'90%'}}>
                     <TextInputContainer title='RTN: ' placeholder='XXXXXXXXXXXXXX'  maxLength={14} teclado='decimal-pad'/>
@@ -49,7 +59,7 @@ const Viajes = (props) =>{
                     <FontAwesome5 name='search' style={styles.icons}/>
                 </View>
                 
-                <DropdownList label='Proveedor:' data={Categoria}/>
+                <DropdownList label='Proveedor:' data={Categoria} onChangeText={(value) => onChangeProveedor(value)}/>
                 <TextInputContainer title='N. Factura: ' placeholder='XXX-XXX-XX-XXXXXXXX' value={nFactura} onChangeText={(value)=>onChanceNFactura(value)} maxLength={19}  teclado='decimal-pad'/>
                 <TextInputContainer title='Descripcion: ' multiline={true} maxLength={300}/>
                 <TextInputContainer title='SubTotal: ' placeholder='999.99' teclado='decimal-pad'
@@ -73,6 +83,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems: "center",
         justifyContent: "center",
+        
     },
     container:{
         width:'80%',
@@ -80,11 +91,13 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center", 
         marginVertical:20,
+        
     },
     scrollview:{
         flex:1,
         alignItems: "center", 
-        justifyContent: "center", 
+        justifyContent: "center",
+        backgroundColor:'#fff', 
     },
     buscarProveedor:{
         width:'100%',
@@ -95,6 +108,7 @@ const styles = StyleSheet.create({
         flex:0,
         fontSize:20,
         marginLeft:5,
+        color:'#1E5128'
       },
 })
 

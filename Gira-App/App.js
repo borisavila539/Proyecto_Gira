@@ -5,10 +5,7 @@ import {Login,Navegador} from './src/Screens/indexScreens'
 export default function App() {
   return (
     <>
-      <StatusBar 
-        style='auto' 
-        backgroundColor={'#3b5998'}
-      />
+      
       <Navegador/> 
     </>
   );

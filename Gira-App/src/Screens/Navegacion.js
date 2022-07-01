@@ -56,14 +56,12 @@ const Navegador = (props) =>{
                 },
                 tabBarActiveTintColor:'#fff',
                 tabBarInactiveTintColor: '#ddd',
-                tabBarActiveBackgroundColor: '#47B5FF',
-                tabBarInactiveBackgroundColor: '#afbdd4',
+                tabBarActiveBackgroundColor: '#4E9F3D',
+                tabBarInactiveBackgroundColor: '#1E5128',
                 tabBarStyle : {height: 70},
                 tabBarLabelStyle: {paddingBottom:15},
                 tabBarIconStyle: {marginTop:5},
                 headerShown:false
-                //tabBarHideOnKeyboard:true,
-                
             })}
             >
                 <Tab.Screen name='Gastos de Viaje'  component={ScreenGastosViaje}/>

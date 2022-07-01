@@ -7,6 +7,11 @@ const DropdownList = (props) => {
             <Dropdown
             label={props.label}
             data={props.data}
+            animationDuration={225}
+            itemCount={3}
+            dropdownPosition={0}
+            value={props.value}
+            onChangeText={props.onChangeText}
             />
         </View>
     )

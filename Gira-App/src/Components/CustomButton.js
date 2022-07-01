@@ -28,12 +28,13 @@ const styles = StyleSheet.create({
         padding:10,
         alignItems: 'center',
         borderRadius:5,
-        backgroundColor:'#06283D',
-        borderWidth:1,
+        backgroundColor:'#4E9F3D',//06283D
+        //borderWidth:1,
       },
       text:{
         fontSize:20,
         color:'#000',
+        fontWeight:'bold',
       },
 })
 
